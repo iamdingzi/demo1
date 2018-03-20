@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <base href="/"/>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/pulic.css}">
+    <script th:src="@{js/jquery.min.js}"></script>
+    <script th:src="@{js/jquery.min.js}"></script>
+</head>
+<body>
+
+<form class="form-horizontal" role="form" th:action="@{/login/login}" method="post">
+    <div id="wei">
+        <h2> 登 录 </h2>
+        <div class="form-group" id="q1">
+            <label class="col-sm-3 control-label"> 用户名：</label>
+            <div class="col-sm-9" style="width: 260px">
+                <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+            </div>
+        </div>
+        <div class="form-group" id="q2">
+            <label class="col-sm-3 control-label">密码：</label>
+            <div class="col-sm-9" style="width: 260px">
+                <input type="text" name="userpassword" class="form-control" placeholder="请输入密码">
+            </div>
+        </div>
+        <div class="form-group" id="q4">
+            <label class="col-sm-3 control-label"> 验证码：</label>
+            <div class="col-sm-5" style="width: 140px">
+                <input type="text" name="code" class="form-control" placeholder="请输入验证码">
+            </div>
+            <div class="col-sm-4" style="width: 120px">
+                <img type="text" id="imgObj" th:src="@{/login/validateCode}" onclick="changeImg()">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-success" id="submitForm">注册</button>
+                <button type="reset" class="btn btn-info">重置</button>
+                <button type="submit" class="btn btn-info">登录</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+</body>
+<script>
+
+    function changeImg() {
+        $("#imgObj").attr("src", "/login/validateCode?" + Math.random());
+    }
+
+</script>
+</html>

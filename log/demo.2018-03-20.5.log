@@ -1,0 +1,8 @@
+2018-03-20 22:34:46,816 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select e_id, e_portrait, e_name, e_pwd, e_uname, e_birthday, e_level, e_six, e_wages, e_hobby, e_deptId from emp where e_name = ? 
+2018-03-20 22:34:46,819 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: admin(String)
+2018-03-20 22:34:46,820 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1
+2018-03-20 22:34:47,695 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select e_id, e_portrait, e_name, e_pwd, e_uname, e_birthday, e_level, e_six, e_wages, e_hobby, e_deptId from emp where e_name = ? 
+2018-03-20 22:34:47,696 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: admin(String)
+2018-03-20 22:34:47,697 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1
+2018-03-20 22:34:55,437 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select e_id, e_portrait, e_name, e_pwd, e_uname, e_birthday, e_level, e_six, e_wages, e_hobby, e_deptId from emp where e_name = ? 
+2018-03-20 22:34:55,438 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: admin(String)

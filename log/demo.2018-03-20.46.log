@@ -1,0 +1,9 @@
+2018-03-20 23:49:04,592 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select d_location from dept group by d_location 
+2018-03-20 23:49:04,594 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-20 23:49:04,595 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 3
+2018-03-20 23:49:04,596 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp 
+2018-03-20 23:49:04,596 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-20 23:49:04,597 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 4
+2018-03-20 23:49:04,598 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select emp.e_id, emp.e_portrait, emp.e_name, emp.e_pwd, emp.e_uname, emp.e_birthday, emp.e_level, emp.e_six, emp.e_wages, emp.e_hobby, emp.e_deptId, dept.d_name, dept.d_location from emp left join dept on emp.e_deptId = dept.d_id 
+2018-03-20 23:49:04,599 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-20 23:49:04,600 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 4

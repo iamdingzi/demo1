@@ -1,0 +1,12 @@
+2018-03-21 00:13:33,429 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select d_location from dept group by d_location 
+2018-03-21 00:13:33,431 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-21 00:13:33,432 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 3
+2018-03-21 00:13:33,433 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp 
+2018-03-21 00:13:33,434 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-21 00:13:33,435 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 4
+2018-03-21 00:13:33,437 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT count(0) FROM emp LEFT JOIN dept ON emp.e_deptId = dept.d_id 
+2018-03-21 00:13:33,437 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-21 00:13:33,438 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1
+2018-03-21 00:13:33,439 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select emp.e_id, emp.e_portrait, emp.e_name, emp.e_pwd, emp.e_uname, emp.e_birthday, emp.e_level, emp.e_six, emp.e_wages, emp.e_hobby, emp.e_deptId, dept.d_name, dept.d_location from emp left join dept on emp.e_deptId = dept.d_id limit ?,? 
+2018-03-21 00:13:33,439 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 0(Integer), 5(Integer)
+2018-03-21 00:13:33,441 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 4

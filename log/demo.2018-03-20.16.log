@@ -1,0 +1,12 @@
+2018-03-20 23:03:33,829 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 4
+2018-03-20 23:03:34,638 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select d_location from dept group by d_location 
+2018-03-20 23:03:34,639 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-20 23:03:34,640 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 3
+2018-03-20 23:03:34,640 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp 
+2018-03-20 23:03:34,641 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-20 23:03:34,642 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 4
+2018-03-20 23:03:35,338 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select d_location from dept group by d_location 
+2018-03-20 23:03:35,339 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-20 23:03:35,340 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 3
+2018-03-20 23:03:35,341 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp 
+2018-03-20 23:03:35,342 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 

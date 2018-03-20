@@ -1,0 +1,5 @@
+2018-03-20 23:31:21,906 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select emp.e_id, emp.e_portrait, emp.e_name, emp.e_pwd, emp.e_uname, emp.e_birthday, emp.e_level, emp.e_six, emp.e_wages, emp.e_hobby, emp.e_deptId dept.d_name dept.d_location from emp left join dept on emp.e_deptId = dept.d_id <where> <if test='dept !=null'>dept.d_name = ?</if> <if test='location !=null'>dept.d_location = ?</if> <if test='eName !=null'>dept.d_location = ?</if> <if test='eLevel !=null'>dept.d_location = ?</if> <if test='eSix !=null'>dept.d_location = ?</if> <if test='eHobby !=null'>dept.d_location = ?</if> <if test='sort !=null'>order by emp.e_wages ?</if></where> 
+2018-03-20 23:31:21,917 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 研发部(String), 北京(String), 231(String), 1(Integer), 1(Integer), 游泳(String), asc(String)
+2018-03-20 23:32:02,951 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select d_location from dept group by d_location 
+2018-03-20 23:32:02,983 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-20 23:32:02,996 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 3

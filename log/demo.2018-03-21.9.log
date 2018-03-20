@@ -1,0 +1,9 @@
+2018-03-21 00:13:47,734 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp 
+2018-03-21 00:13:47,736 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-21 00:13:47,737 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 4
+2018-03-21 00:13:47,740 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT count(0) FROM emp LEFT JOIN dept ON emp.e_deptId = dept.d_id 
+2018-03-21 00:13:47,741 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
+2018-03-21 00:13:47,743 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1
+2018-03-21 00:13:47,745 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select emp.e_id, emp.e_portrait, emp.e_name, emp.e_pwd, emp.e_uname, emp.e_birthday, emp.e_level, emp.e_six, emp.e_wages, emp.e_hobby, emp.e_deptId, dept.d_name, dept.d_location from emp left join dept on emp.e_deptId = dept.d_id limit ?,? 
+2018-03-21 00:13:47,746 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 0(Integer), 5(Integer)
+2018-03-21 00:13:47,748 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 4
