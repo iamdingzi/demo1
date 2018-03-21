@@ -78,13 +78,20 @@ public class LoginController {
         session.setAttribute("nowTime", new Date());
         emp.setePwd(null);
         try {
-            response.sendRedirect(request.getContextPath()+"/list");
+            response.sendRedirect(request.getContextPath()+"/data/list");
         } catch (IOException e){
             e.printStackTrace();
         }
         return null;
     }
 
+    /**
+     * 验证码图片
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value="/validateCode")
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
         response.setDateHeader("Expires", 0);
@@ -105,6 +112,12 @@ public class LoginController {
         return null;
     }
 
+    /**
+     * 登出
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("/loginOut")
     public String loginOut(HttpServletRequest request, HttpServletResponse response){
         Cookie[] cookies = request.getCookies();

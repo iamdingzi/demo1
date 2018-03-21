@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Emp;
+import com.example.demo.entity.EmpVO;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface EmpService {
     Emp getEmp(Emp param);
 
     Emp getEmpByName(String username);
+
+    Boolean save(EmpVO empVO);
 }

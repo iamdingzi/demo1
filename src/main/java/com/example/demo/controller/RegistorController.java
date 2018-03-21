@@ -1,10 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.EmpVO;
 import com.example.demo.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by Administrator on 2018/3/20/020.
@@ -18,13 +19,20 @@ public class RegistorController {
     private EmpService empService;
 
     @RequestMapping
-    public String loginView(){
+    public String loginView() {
         return "register";
     }
 
-    @ResponseBody
-    @RequestMapping("list")
-    public Object getEmp(){
-        return empService.getEmpByList();
+
+    @RequestMapping("/reg")
+    public Object register(EmpVO empVO) {
+        String name = empVO.geteName();
+        String pwd = empVO.getePwd();
+        Integer deptId = empVO.geteDeptId();
+        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(pwd) || null == deptId) {
+            throw new RuntimeException("信息错误！");
+        }
+        empService.save(empVO);
+        return "/login";
     }
 }

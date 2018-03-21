@@ -94,13 +94,13 @@
                 <form  th:action="@{/data/list}" id="pageNation" method="post">
                     共<span th:text="${pageInfo.pages}"></span>页 &nbsp;&nbsp; <span th:text="${pageInfo.pageNum+'/'+pageInfo.pages}"></span>
                     &nbsp;&nbsp;每页显示<span th:text="${pageInfo.pageSize}"></span>条数据 &nbsp;&nbsp;共<span th:text="${pageInfo.size}"></span>条数量&nbsp;&nbsp;
-                    <a href="javascript:firstIndex()">首页</a>
-                    <a href="javascript:previce()">上一页</a>
-                    <a href="javascript:next()">下一页</a>
-                    <a href="javascript:last()">尾页</a>
+                    <a href="javascript:firstPage()">首页</a>
+                    <a href="javascript:prePage()">上一页</a>
+                    <a href="javascript:nextPage()">下一页</a>
+                    <a href="javascript:lastPage()">尾页</a>
                     跳转到第<input type="text"  id="pageNumber" name="pageNumber" style="height:30px;" placeholder="请输入页数">页
-                    <input type="submit" class="btn btn-primary" style="height:30px; " value="跳转">
-                    每页显示： <select style="height:30px" name="pageSize">
+                    <input onclick="changePage()" class="btn btn-primary" style="height:30px; " value="跳转">
+                    每页显示： <select style="height:30px" id="pageSize" name="pageSize" onchange="changePageSize()" th:selected="${pageInfo.pageSize}">
                     <option value="2">2</option>
                     <option value="3" >3</option>
                 </select>
@@ -114,13 +114,61 @@
     </div>
 
 </table>
-<script>
-    function firstIndex() {
-       $('#pageNumber').val(1);
-       $('#pageNation').submit();
+<script th:inline="javascript">
+
+
+    function firstPage() {
+        formSubmit(1);
     }
-    function previce() {
-        
+    function prePage() {
+        /*<![CDATA[*/
+        var prePage = [[${pageInfo.prePage}]]
+        formSubmit(prePage);
+        /*]]>*/
+    }
+    function nextPage() {
+        /*<![CDATA[*/
+        var nextPage = [[${pageInfo.nextPage}]]
+        if (!nextPage) {
+            nextPage = [[${pageInfo.pages}]]
+        }
+        formSubmit(nextPage);
+        /*]]>*/
+    }
+
+    function lastPage() {
+        /*<![CDATA[*/
+        var lastPage = [[${pageInfo.pages}]]
+        formSubmit(lastPage);
+        /*]]>*/
+    }
+
+    function changePage() {
+        var page = $('#pageNumber').val();
+        if(!page){
+            return;
+        }
+        if(!/^[0-9]+$/.test(page)){
+            alert("非法输入！！！");
+            return;
+        }
+        $('#pageNation').submit();
+    }
+
+    function changePageSize() {
+        var pageSize = $('#pageSize').val();
+        /*<![CDATA[*/
+        var oldSize = [[${pageInfo.pageSize}]];
+        var flag =  (pageSize == oldSize);
+        if(!flag){
+            $('#pageNation').submit();
+        }
+        /*]]>*/
+    }
+
+    function formSubmit(index) {
+        $('#pageNumber').val(index);
+        $('#pageNation').submit();
     }
 </script>
 </body>

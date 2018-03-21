@@ -32,7 +32,7 @@ public class DataController {
     private EmpDao empDao;
 
     @RequestMapping("/list")
-    public String listView(Model model, EmpVO param, @RequestParam(defaultValue = "5") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNumber) {
+    public String listView(Model model, EmpVO param, @RequestParam(defaultValue = "2") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNumber) {
         List<String> locationList =  deptDao.getLocationList();
         List<Emp> emps = empDao.selectAll();
         List<String> hobbyList = emps.stream().map(Emp::geteHobby).collect(Collectors.toList());
