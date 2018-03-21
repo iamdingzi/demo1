@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
+    <base href="/login">
     <meta charset="UTF-8">
     <title>修改密码</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -9,41 +10,71 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<form class="form-horizontal" role="form"  method="post">
+<form class="form-horizontal" id="form" role="form" th:action="@{/register/updatemm}"   method="post">
     <div id="wei">
         <h2>修改密码</h2>
         <div class="form-group" id="q1" >
             <label  class="col-sm-3 control-label">账号：</label>
             <div class="col-sm-9"style="width: 260px">
-                <input type="text" class="form-control"  disabled="true">
+                <label>
+                    <input  type="text"
+                           th:value="${session.loginUser} != null ? (${session.loginUser.eName} != null ? ${session.loginUser.eName} : '暂无') : '暂无'"
+                           class="form-control" disabled="disabled"/>
+                </label>
+                <input type="hidden" th:value="${session.loginUser.eId}" name="eId"/>
+                <input type="hidden" th:value="${session.loginUser.eName}" name="eName"/>
             </div>
         </div>
         <div class="form-group"id="q2">
             <label  class="col-sm-3 control-label">旧密码：</label>
             <div class="col-sm-9" style="width: 260px">
-                <input type="text"  class="form-control" placeholder="请输入旧密码">
+                <input type="text" name="oldpwd"  class="form-control" placeholder="请输入旧密码">
             </div>
         </div>
         <div class="form-group"id="q3">
             <label  class="col-sm-3 control-label">新密码：</label>
             <div class="col-sm-9" style="width: 260px">
-                <input type="text" class="form-control"  placeholder="请输入新密码">
+                <input type="text" id="ePwd" name="ePwd" class="form-control"  placeholder="请输入新密码">
             </div>
         </div>
         <div class="form-group"id="q4">
             <label  class="col-sm-3 control-label">确认密码：</label>
             <div class="col-sm-9" style="width: 260px">
-                <input type="text" class="form-control"  placeholder="请输入确认密码">
+                <input type="text" id="secondPwd" name="secondPwd" class="form-control"  placeholder="请输入确认密码">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="button"  class="btn btn-success"> 修 改 </button>
+                <button type="button" onclick="submitf()"  class="btn btn-success"> 修 改 </button>
                 <button type="reset" class="btn btn-info"> 重 置 </button>
-                <button  class="btn btn-info"> 返 回 </button>
+                <a href="javascript:window.history.go(-1)" class="btn btn-info"> 返 回 </a>
             </div>
         </div>
     </div>
 </form>
 </body>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $(function () {
+        var name = [[${session.loginUser.eName}]];
+        if(!name){
+            window.location.href = "/login"
+        }
+    })
+
+    function submitf() {
+        var secondPwd = $('#secondPwd').val();
+        var ePwd = $('#ePwd').val();
+        if(secondPwd === ePwd) {
+            $.post('/register/updatemm', $("#form").serialize(),function () {
+                alert("修改成功");
+                window.location.href = '/data/list';
+            })
+        }
+
+    }
+
+
+    /*]]>*/
+</script>
 </html>

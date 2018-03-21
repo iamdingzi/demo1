@@ -1,15 +1,3 @@
-2018-03-21 17:54:29,577 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select emp.e_id, emp.e_portrait, emp.e_name, emp.e_pwd, emp.e_uname, emp.e_birthday, emp.e_level, emp.e_six, emp.e_wages, emp.e_hobby, emp.e_deptId, dept.d_name, dept.d_location from emp left join dept on emp.e_deptId = dept.d_id limit ?,? 
-2018-03-21 17:54:29,582 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 4(Integer), 2(Integer)
-2018-03-21 17:54:29,583 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 2
-2018-03-21 17:54:30,856 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select d_location from dept group by d_location 
-2018-03-21 17:54:30,858 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
-2018-03-21 17:54:30,859 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 3
-2018-03-21 17:54:30,860 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp 
-2018-03-21 17:54:30,861 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
-2018-03-21 17:54:30,863 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 7
-2018-03-21 17:54:30,868 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT count(0) FROM emp LEFT JOIN dept ON emp.e_deptId = dept.d_id 
-2018-03-21 17:54:30,869 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 
-2018-03-21 17:54:30,870 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1
-2018-03-21 17:54:30,872 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: select emp.e_id, emp.e_portrait, emp.e_name, emp.e_pwd, emp.e_uname, emp.e_birthday, emp.e_level, emp.e_six, emp.e_wages, emp.e_hobby, emp.e_deptId, dept.d_name, dept.d_location from emp left join dept on emp.e_deptId = dept.d_id limit ?,? 
-2018-03-21 17:54:30,873 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 0(Integer), 3(Integer)
-2018-03-21 17:54:30,875 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 3
+2018-03-21 22:46:25,394 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp WHERE e_id = ? 
+2018-03-21 22:46:25,396 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 1(Integer)
+2018-03-21 22:46:25,397 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1

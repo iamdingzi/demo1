@@ -3,6 +3,9 @@
 <head lang="en">
     <base href="/login">
     <meta charset="UTF-8">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
     <title>列表</title>
     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{css/list.css}">
@@ -10,52 +13,54 @@
     <script th:src="@{js/bootstrap.min.js}"></script>
 </head>
 <body>
-<h1>欢迎你，<span style="color: red;margin-right: 40px " th:text="${session.loginUser} != null ? (${session.loginUser.eName} != null ? ${session.loginUser.eName} : '暂无') : '暂无'"></span>今日访问量：33 总访问量：444</h1>
-<form  th:action="@{/data/list}" th:method="post" >
-    <div id="ww" >
-        部门名称：<select  style="height:30px" name="dept">
-                    <option value="">--请选择--</option>
-                    <option value ="研发部">研发部</option>
-                    <option value ="人事部">人事部</option>
-                    <option value="公关部">公关部</option>
-                 </select>
-        工资：<select  style="height:30px" name="sort">
-                    <option value="">--请选择--</option>
-                    <option value ="asc">升序</option>
-                    <option value="desc">降序</option>
-            </select>
+<h1>欢迎你，<span style="color: red;margin-right: 40px "
+              th:text="${session.loginUser} != null ? (${session.loginUser.eName} != null ? ${session.loginUser.eName} : '暂无') : '暂无'"></span>今日访问量：33
+    总访问量：444</h1>
+<form th:action="@{/data/list}" th:method="post">
+    <div id="ww">
+        部门名称：<select style="height:30px" name="dept">
+        <option value="">--请选择--</option>
+        <option value="研发部">研发部</option>
+        <option value="人事部">人事部</option>
+        <option value="公关部">公关部</option>
+    </select>
+        工资：<select style="height:30px" name="sort">
+        <option value="">--请选择--</option>
+        <option value="asc">升序</option>
+        <option value="desc">降序</option>
+    </select>
         级别：<select style="height:30px" name="eLevel">
-                    <option value ="">---请选择---</option>
-                    <option value ="1">王者</option>
-                    <option value ="2">黄金</option>
-                    <option value="3">青铜</option>
-                    <option value="4">白银</option>
-             </select>
+        <option value="">---请选择---</option>
+        <option value="1">王者</option>
+        <option value="2">黄金</option>
+        <option value="3">青铜</option>
+        <option value="4">白银</option>
+    </select>
         性别：<select style="height:30px" name="eSix">
-                    <option value ="">---请选择---</option>
-                    <option value ="1">男</option>
-                    <option value="2">女</option>
-            </select>
+        <option value="">---请选择---</option>
+        <option value="1">男</option>
+        <option value="2">女</option>
+    </select>
         爱好：<select style="height:30px" name="eHobby">
-                    <option value ="">---请选择---</option>
-                    <option  th:each="hobby:${hobbyList}" th:text="${hobby}" th:value="${hobby}"></option>
-               </select>
+        <option value="">---请选择---</option>
+        <option th:each="hobby:${hobbyList}" th:text="${hobby}" th:value="${hobby}"></option>
+    </select>
         部门地点：<select style="height:30px" name="location">
-                <option value ="">---请选择---</option>
-                <option th:each="location:${locationList}" th:text="${location}" th:value="${location}"></option>
-                </select>
-      姓名：<input type="text" name="eName" style="height:30px" placeholder="请输入关键字"  autocomplete="off"/>
+        <option value="">---请选择---</option>
+        <option th:each="location:${locationList}" th:text="${location}" th:value="${location}"></option>
+    </select>
+        姓名：<input type="text" name="eName" style="height:30px" placeholder="请输入关键字" autocomplete="off"/>
         <input type="submit" style="height:30px;" class="btn btn-info" value="查询">
         <button type="button" style="height:30px;" class="btn btn-success">新增</button>
-        <button type="button"  style="height:30px;" class="btn btn-info">导入</button>
-        <button type="button"  style="height:30px;" class="btn btn-info">导出</button>
-        <button type="button" style="height:30px;"  class="btn btn-success">修改密码</button>
-        <button type="button"style="height:30px;" class="btn btn-success">退出</button>
+        <button type="button" style="height:30px;" class="btn btn-info">导入</button>
+        <button type="button" style="height:30px;" class="btn btn-info">导出</button>
+        <a type="button"  href="/register/updateMima" style="height:30px;" class="btn btn-success">修改密码</a>
+        <a type="button" href="javascript:window.location.replace('/login/loginOut')" style="height:30px;" class="btn btn-success">退出</a>
     </div>
 </form>
 
 
-<table class="table table-bordered" id="ss" >
+<table class="table table-bordered" id="ss">
 
 
     <div th:if="${pageInfo.size > 0}">
@@ -84,25 +89,29 @@
             <td th:text="${emp.dept}"></td>
             <td th:text="${emp.location}"></td>
             <td>
-                <button type="button"  class="btn btn-info">查看</button>
-                <button type="button" class="btn btn-warning">修改</button>
-                <button type="button" class="btn btn-danger">删除</button>
+                <button type="button" th:onclick="'javascript:view('+${emp.eId}+');'" class="btn btn-info">查看</button>
+                <button type="button" th:onclick="'javascript:edit('+${emp.eId}+');'" class="btn btn-warning">修改
+                </button>
+                <button type="button" th:onclick="'javascript:del('+${emp.eId}+');'" class="btn btn-danger">删除</button>
             </td>
         </tr>
         <tr>
             <td colspan="13">
-                <form  th:action="@{/data/list}" id="pageNation" method="post">
-                    共<span th:text="${pageInfo.pages}"></span>页 &nbsp;&nbsp; <span th:text="${pageInfo.pageNum+'/'+pageInfo.pages}"></span>
-                    &nbsp;&nbsp;每页显示<span th:text="${pageInfo.pageSize}"></span>条数据 &nbsp;&nbsp;共<span th:text="${pageInfo.size}"></span>条数量&nbsp;&nbsp;
+                <form th:action="@{/data/list}" id="pageNation" method="post">
+                    共<span th:text="${pageInfo.pages}"></span>页 &nbsp;&nbsp; <span
+                        th:text="${pageInfo.pageNum+'/'+pageInfo.pages}"></span>
+                    &nbsp;&nbsp;每页显示<span th:text="${pageInfo.pageSize}"></span>条数据 &nbsp;&nbsp;共<span
+                        th:text="${pageInfo.size}"></span>条数量&nbsp;&nbsp;
                     <a href="javascript:firstPage()">首页</a>
                     <a href="javascript:prePage()">上一页</a>
                     <a href="javascript:nextPage()">下一页</a>
                     <a href="javascript:lastPage()">尾页</a>
-                    跳转到第<input type="text"  id="pageNumber" name="pageNumber" style="height:30px;" placeholder="请输入页数">页
+                    跳转到第<input type="text" id="pageNumber" name="pageNumber" style="height:30px;" placeholder="请输入页数">页
                     <input onclick="changePage()" class="btn btn-primary" style="height:30px; " value="跳转">
-                    每页显示： <select style="height:30px" id="pageSize" name="pageSize" onchange="changePageSize()" th:selected="${pageInfo.pageSize}">
+                    每页显示： <select style="height:30px" id="pageSize" name="pageSize" onchange="changePageSize()"
+                                  th:selected="${pageInfo.pageSize}">
                     <option value="2">2</option>
-                    <option value="3" >3</option>
+                    <option value="3">3</option>
                 </select>
                 </form>
             </td>
@@ -135,41 +144,59 @@
         formSubmit(nextPage);
         /*]]>*/
     }
-
     function lastPage() {
         /*<![CDATA[*/
         var lastPage = [[${pageInfo.pages}]]
         formSubmit(lastPage);
         /*]]>*/
     }
-
     function changePage() {
         var page = $('#pageNumber').val();
-        if(!page){
+        if (!page) {
             return;
         }
-        if(!/^[0-9]+$/.test(page)){
+        if (!/^[0-9]+$/.test(page)) {
             alert("非法输入！！！");
             return;
         }
         $('#pageNation').submit();
     }
-
     function changePageSize() {
         var pageSize = $('#pageSize').val();
         /*<![CDATA[*/
         var oldSize = [[${pageInfo.pageSize}]];
-        var flag =  (pageSize == oldSize);
-        if(!flag){
+        var flag = (pageSize == oldSize);
+        if (!flag) {
             $('#pageNation').submit();
         }
         /*]]>*/
     }
-
     function formSubmit(index) {
         $('#pageNumber').val(index);
         $('#pageNation').submit();
     }
+
+    function view(eId) {
+        window.location.href = '/data/view/' + eId;
+    }
+    function edit(eId) {
+        window.location.href = '/data/edit/' + eId;
+    }
+    function del(eId) {
+        if (confirm("确认需要删除？")) {
+            $.get("/data/del/" + eId, function () {
+                alert("删除成功");
+            });
+        }
+    }
+
+    $(function () {
+        /*<![CDATA[*/
+        var ename = [[${session.loginUser.eName}]];
+        if(!ename)
+            window.location.href = "/login";
+        /*]]>*/
+    })
 </script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Emp;
 import com.example.demo.entity.EmpVO;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,4 +18,8 @@ public interface EmpService {
     Emp getEmpByName(String username);
 
     Boolean save(EmpVO empVO);
+
+    void editUserInfo(MultipartFile headpic);
+
+    Boolean updatePwd(Emp emp);
 }

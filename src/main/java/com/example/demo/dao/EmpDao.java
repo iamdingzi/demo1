@@ -62,8 +62,9 @@ public interface EmpDao extends MyMapper<Emp> {
             "  <if test='eLevel !=null and eLevel != \"\"' > and emp.e_level = #{eLevel}</if>" +
             "  <if test='eSix !=null and eSix != \"\"' > and emp.e_six = #{eSix}</if>" +
             "  <if test='eHobby !=null and eHobby != \"\"' > and emp.e_hobby = #{eHobby}</if>" +
-            "  <if test='sort !=null and sort != \"\"' > order by emp.e_wages ${sort}</if>" +
-            "</where> </script>")
+            "</where> " +
+            "<if test='sort !=null and sort != \"\"' > order by emp.e_wages ${sort}</if>" +
+            "</script>")
 
     @Results({
             @Result(property = "eId",column = "e_id"),
