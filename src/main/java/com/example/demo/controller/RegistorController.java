@@ -49,11 +49,21 @@ public class RegistorController {
         return "/login";
     }
 
+    /**
+     * 修改密码页面
+     * @return
+     */
     @RequestMapping("/updateMima")
     public String updateMimaView() {
         return "/mima";
     }
 
+    /**
+     * 提交修改密码
+     * @param oldpwd
+     * @param emp
+     * @return
+     */
     @RequestMapping("updatemm")
     @ResponseBody
     public Object updateMima(String oldpwd,Emp emp) {

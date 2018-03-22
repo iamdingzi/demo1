@@ -14,6 +14,10 @@ import java.util.List;
 public interface DeptDao extends MyMapper<Dept> {
 
 
+    /**
+     * 获取地址集合
+     * @return
+     */
     @Select("select d_location from dept group by d_location")
     List<String> getLocationList();
 }

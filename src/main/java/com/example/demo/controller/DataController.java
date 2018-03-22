@@ -33,6 +33,14 @@ public class DataController {
     @Autowired
     private EmpDao empDao;
 
+    /**
+     * emp list 页面
+     * @param model
+     * @param param
+     * @param pageSize
+     * @param pageNumber
+     * @return
+     */
     @RequestMapping("/list")
     public String listView(Model model, EmpVO param, @RequestParam(defaultValue = "2") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNumber) {
         List<String> locationList = deptDao.getLocationList();
@@ -47,6 +55,12 @@ public class DataController {
         return "list";
     }
 
+    /**
+     * 详情页面
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/view/{id}")
     public Object view(@PathVariable String id, Model model) {
         Emp param = new Emp();
@@ -56,6 +70,12 @@ public class DataController {
         return "view";
     }
 
+    /**
+     * 编辑页面
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/edit/{id}")
     public Object edit(@PathVariable String id, Model model) {
         Emp param = new Emp();
@@ -65,6 +85,11 @@ public class DataController {
         return "update";
     }
 
+    /**
+     * 根据id删除emp
+     * @param id
+     * @return
+     */
     @RequestMapping("/del/{id}")
     @ResponseBody
     public Object del(@PathVariable String id) {
@@ -72,6 +97,11 @@ public class DataController {
         return i > 0;
     }
 
+    /**
+     * 更新emp
+     * @param emp
+     * @return
+     */
     @RequestMapping("edit")
     @ResponseBody
     public Object editview(Emp emp) {

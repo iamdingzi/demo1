@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-
 /**
  * Created by Administrator on 2018/3/20/020.
  */
@@ -22,10 +20,6 @@ public class EmpServiceImpl implements EmpService {
     @Autowired
     private EmpDao empDao;
 
-    @Override
-    public List<Emp> getEmpByList() {
-        return empDao.selectAll();
-    }
 
     @Override
     public Emp getEmp(Emp param) {
@@ -38,12 +32,12 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public Boolean save(EmpVO empVO) {
+    public void save(EmpVO empVO) {
         Emp emp = new Emp();
         emp.seteName(empVO.geteName());
         emp.seteDeptId(empVO.geteDeptId());
         emp.setePwd(SwordBCrypt.hashpw(empVO.geteName() + empVO.getePwd()));//加密
-        return empDao.insert(emp) > 0;
+        empDao.insert(emp);
     }
 
     @Override
@@ -63,7 +57,7 @@ public class EmpServiceImpl implements EmpService {
             emp.seteId(eId);
             try {
                 ImageUtil.saveFileFromInputStream(headpic.getInputStream(), localPath, saveFileName);
-                emp.setePortrait(localPath.replace("D:","")+saveFileName);
+                emp.setePortrait(localPath.replace("D:poho","/upload")+saveFileName);
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
@@ -71,9 +65,9 @@ public class EmpServiceImpl implements EmpService {
             int result = empDao.updateByPrimaryKeySelective(emp);
             if(result!=0){
                 // 修改成功
-                if (headpic != null && !headpic.isEmpty()) {
+                if (!headpic.isEmpty()) {
                     // 删除原来头像的图片
-                    String localPath2= "D:" + empDB.getePortrait();
+                    String localPath2= "D:poho" + empDB.getePortrait();
                     ImageUtil.deleteFile(localPath2);
                 }
             }else{

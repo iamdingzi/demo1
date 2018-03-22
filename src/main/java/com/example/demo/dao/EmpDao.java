@@ -17,6 +17,11 @@ import java.util.List;
 @Mapper
 public interface EmpDao extends MyMapper<Emp> {
 
+    /**
+     * 根据名字查询Emp
+     * @param username
+     * @return
+     */
     @Select("select e_id, " +
             "e_portrait, " +
             "e_name, " +
@@ -41,6 +46,11 @@ public interface EmpDao extends MyMapper<Emp> {
     )
     Emp getEmpByName(String username);
 
+    /**
+     * 列表多条件查询
+     * @param param
+     * @return
+     */
     @Select("<script> select  emp.e_id, " +
             " emp.e_portrait, " +
             " emp.e_name, " +
