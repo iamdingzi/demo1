@@ -47,22 +47,42 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public void editUserInfo(MultipartFile headpic) {
+    public Emp editUserInfo(MultipartFile headpic,Integer eId) {
+        Emp empDB = empDao.selectByPrimaryKey(eId);
+        if(empDB==null){
+           return null;
+        }
+
         if (headpic != null && !headpic.isEmpty()) {
             // 头像处理
             // 本地存储地址
             String saveFileName = DateUtil.formatCurDate()
                     + headpic.getOriginalFilename().substring(headpic.getOriginalFilename().lastIndexOf("."));
-            String localPath = "D:test/Image";
-
+            String localPath = "D:poho/img/";
+            Emp emp = new Emp();
+            emp.seteId(eId);
             try {
                 ImageUtil.saveFileFromInputStream(headpic.getInputStream(), localPath, saveFileName);
-
+                emp.setePortrait(localPath.replace("D:","")+saveFileName);
             } catch (Exception e) {
                 e.printStackTrace();
-
+                return null;
             }
+            int result = empDao.updateByPrimaryKeySelective(emp);
+            if(result!=0){
+                // 修改成功
+                if (headpic != null && !headpic.isEmpty()) {
+                    // 删除原来头像的图片
+                    String localPath2= "D:" + empDB.getePortrait();
+                    ImageUtil.deleteFile(localPath2);
+                }
+            }else{
+                return null;
+            }
+        }else{
+            return null;
         }
+        return empDao.selectByPrimaryKey(eId);
     }
 
     @Override

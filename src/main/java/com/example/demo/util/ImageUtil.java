@@ -1,6 +1,7 @@
 package com.example.demo.util;
 
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
@@ -32,4 +33,15 @@ public class ImageUtil {
         System.out.println("文件写入完毕。");
     }
 
+    /**
+     * 根据文件路径删除文件
+     *
+     * @param path 文件全路径
+     */
+    public static void deleteFile(String path) {
+        File file = new File(path);
+        if (file.exists() && file.isFile()) {
+            file.delete();
+        }
+    }
 }

@@ -19,7 +19,7 @@ public interface EmpService {
 
     Boolean save(EmpVO empVO);
 
-    void editUserInfo(MultipartFile headpic);
+    Emp editUserInfo(MultipartFile headpic,Integer eId);
 
     Boolean updatePwd(Emp emp);
 }

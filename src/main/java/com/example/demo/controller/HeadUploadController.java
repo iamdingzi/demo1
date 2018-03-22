@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Emp;
 import com.example.demo.service.EmpService;
 import com.example.demo.util.DateUtil;
 import com.example.demo.util.ImageUtil;
@@ -33,10 +34,10 @@ public class HeadUploadController {
 
     @RequestMapping(value = "/editUserInfo")
     @ResponseBody
-    public Object editUserInfo(HttpServletRequest request, String userId) {
+    public Object editUserInfo(HttpServletRequest request, Integer eId) {
         MultipartHttpServletRequest res = (MultipartHttpServletRequest)request;
         MultipartFile headpic = res.getFiles("file").get(0);
-        empService.editUserInfo(headpic);
-        return null;
+        Emp emp = empService.editUserInfo(headpic, eId);
+        return emp;
     }
 }
