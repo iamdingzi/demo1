@@ -1,3 +1,9 @@
-2018-03-21 22:46:25,394 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp WHERE e_id = ? 
-2018-03-21 22:46:25,396 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 1(Integer)
-2018-03-21 22:46:25,397 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1
+2018-03-22 11:08:23,552 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp WHERE e_id = ? 
+2018-03-22 11:08:23,556 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 1(Integer)
+2018-03-22 11:08:23,558 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1
+2018-03-22 11:08:23,562 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: UPDATE emp SET e_portrait = ? WHERE e_id = ? 
+2018-03-22 11:08:23,562 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: poho/img/20180322110823.png(String), 1(Integer)
+2018-03-22 11:08:23,568 DEBUG (BaseJdbcLogger.java:145)- <==    Updates: 1
+2018-03-22 11:08:23,569 DEBUG (BaseJdbcLogger.java:145)- ==>  Preparing: SELECT e_id,e_portrait,e_name,e_pwd,e_uname,e_birthday,e_level,e_six,e_wages,e_hobby,e_deptId FROM emp WHERE e_id = ? 
+2018-03-22 11:08:23,569 DEBUG (BaseJdbcLogger.java:145)- ==> Parameters: 1(Integer)
+2018-03-22 11:08:23,571 DEBUG (BaseJdbcLogger.java:145)- <==      Total: 1
